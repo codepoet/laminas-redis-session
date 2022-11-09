@@ -68,11 +68,11 @@ RUN apt-get install --yes libicu-dev \
 
 ## Redis support.  igbinary and libzstd-dev are only needed based on 
 ## redis pecl options
-# RUN pecl install igbinary \
-#     && docker-php-ext-enable igbinary \
-#     && apt-get install --yes libzstd-dev \
-#     && pecl install redis \
-#     && docker-php-ext-enable redis
+RUN pecl install igbinary \
+    && docker-php-ext-enable igbinary \
+    && apt-get install --yes libzstd-dev \
+    && pecl install redis \
+    && docker-php-ext-enable redis
 
 
 WORKDIR /var/www
