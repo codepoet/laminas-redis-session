@@ -13,5 +13,14 @@
  */
 
 return [
-    // ...
+    'session_containers' => [
+        Laminas\Session\Container::class,
+    ],
+    'session_storage' => [
+        'type' => Laminas\Session\Storage\SessionArrayStorage::class,
+    ],
+    'session_config'  => [
+        'phpSaveHandler' => 'redis',
+        'savePath' => 'tcp://redis:6379?weight=1&timeout=1',
+    ],
 ];
