@@ -31,6 +31,16 @@ return [
                     ],
                 ],
             ],
+            'redis.read' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/read',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
             'redis.update' => [
                 'type'    => Literal::class,
                 'options' => [
