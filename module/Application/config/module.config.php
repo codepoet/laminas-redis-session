@@ -6,7 +6,7 @@ namespace Application;
 
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
-use Laminas\ServiceManager\Factory\InvokableFactory;
+use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
 
 return [
     'router' => [
@@ -18,6 +18,36 @@ return [
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',
+                    ],
+                ],
+            ],
+            'redis.create' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/create',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action'     => 'update',
+                    ],
+                ],
+            ],
+            'redis.update' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/update',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action'     => 'update',
+                    ],
+                ],
+            ],
+            'redis.delete' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/delete',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action'     => 'delete',
                     ],
                 ],
             ],
@@ -35,7 +65,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+            Controller\IndexController::class => ReflectionBasedAbstractFactory::class,
         ],
     ],
     'view_manager' => [
